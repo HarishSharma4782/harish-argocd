@@ -7,13 +7,14 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/HarishSharma4782/harish-argocd.git'
-    chart: my-reports-chart
+    path: .
+    #chart: my-reports-chart
     targetRevision: main
     helm:
       valueFiles:
         - values.dev.yaml
-    plugin:
-      name: aws
+    #plugin:
+      #name: aws
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
