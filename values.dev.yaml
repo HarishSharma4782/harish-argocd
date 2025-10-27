@@ -28,5 +28,5 @@ ingress:
 
 serviceAccount:
   create: true
-  name: my-reports-dev-my-reports-chart
+  name: my-reports-dev
 
