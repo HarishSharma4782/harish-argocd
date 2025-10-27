@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.name }}-config
+  labels:
+    app: {{ .Values.name }}
+data:
+  # Add your key-value pairs here
+  # APP_ENV: "staging"
+  #  LOG_LEVEL: "info"

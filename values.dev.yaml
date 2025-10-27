@@ -1,0 +1,32 @@
+replicaCount: 2
+
+image:
+  repository: 118984406529.dkr.ecr.us-east-2.amazonaws.com/dev/my-reports-app
+  tag: dev
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 3000
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: my-reports.dev.local
+      paths:
+        - path: /
+          pathType: Prefix
+
+serviceAccount:
+  create: true
+  name: my-reports-dev-my-reports-chart
+

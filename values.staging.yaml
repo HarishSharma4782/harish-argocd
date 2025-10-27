@@ -1,0 +1,33 @@
+replicaCount: 2
+
+image:
+  repository: my-reports-app
+  tag: dev
+  pullPolicy: Never
+
+service:
+  type: ClusterIP
+  port: 80
+  
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: my-reports.staging.local
+      paths:
+        - path: /
+          pathType: Prefix
+
+serviceAccount:
+  create: true
+  name: my-reports-sa
+
