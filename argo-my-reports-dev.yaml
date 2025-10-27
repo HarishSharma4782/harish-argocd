@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: s3://ourshopee-misc/haris-helm-charts
+    repoURL: 'https://github.com/HarishSharma4782/harish-argocd.git'
     chart: my-reports-chart
-    targetRevision: 0.1.0
+    targetRevision: main
     helm:
       valueFiles:
         - values.dev.yaml
