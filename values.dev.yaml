@@ -26,6 +26,8 @@ resources:
 ingress:
   enabled: true
   className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
   hosts:
     - host: my-reports.dev.local
       paths:
