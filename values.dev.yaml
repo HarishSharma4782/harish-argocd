@@ -5,6 +5,10 @@ image:
   tag: dev
   pullPolicy: Always
 
+
+imagePullSecrets:
+  - name: ecr-regcred
+  
 service:
   type: ClusterIP
   port: 3000
