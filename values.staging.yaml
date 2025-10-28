@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: my-reports-app
+  repository: 118984406529.dkr.ecr.us-east-2.amazonaws.com/dev/my-reports-app
   tag: dev
   pullPolicy: Never
 
@@ -9,14 +9,20 @@ service:
   type: ClusterIP
   port: 80
   
+imagePullSecrets:
+  - name: ecr-regcred
+service:
+  type: ClusterIP
+  port: 3000
+  
 
 resources:
   limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
     cpu: 100m
     memory: 128Mi
-  requests:
-    cpu: 50m
-    memory: 64Mi
 
 ingress:
   enabled: true
@@ -29,5 +35,5 @@ ingress:
 
 serviceAccount:
   create: true
-  name: my-reports-sa
+  name: my-reports-staging
 

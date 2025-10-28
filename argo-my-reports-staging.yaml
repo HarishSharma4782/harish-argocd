@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-reports-staging
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/HarishSharma4782/harish-argocd.git'
+    path: .        # Folder that has Chart.yaml
+    targetRevision: main          # Branch name in GitHub
+    helm:
+      valueFiles:
+        - values.yaml
+        - values.staging.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: staging
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
