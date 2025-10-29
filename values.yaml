@@ -168,7 +168,7 @@ envSecrets:
   name: my-reports-db-secret
 
 secret:
-  name: my-reports-secrets
+  name: my-reports-db-secret
   data:
     DB_HOST: ""
     DB_USER: ""

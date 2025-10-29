@@ -42,7 +42,7 @@ envSecrets:
   name: my-reports-db-secret
 
 secret:
-  name: my-reports-secrets
+  name: my-reports-db-secret
   data:
     DB_HOST: dev-db2.c78um84ewxvo.ap-south-1.rds.amazonaws.com
     DB_USER: readonly_dev
