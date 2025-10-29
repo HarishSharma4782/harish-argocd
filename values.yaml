@@ -167,4 +167,14 @@ affinity: {}
 envSecrets:
   name: my-reports-db-secret
 
+secret:
+  name: my-reports-secrets
+  data:
+    DB_HOST: ""
+    DB_USER: ""
+    DB_PASSWORD: ""
+    DB_NAME: ""
+
+
+
 
