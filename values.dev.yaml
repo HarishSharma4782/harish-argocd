@@ -38,3 +38,7 @@ serviceAccount:
   create: true
   name: my-reports-dev
 
+envSecrets:
+  name: my-reports-db-secret
+
+

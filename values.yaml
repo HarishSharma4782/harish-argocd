@@ -164,3 +164,7 @@ tolerations: []
 
 affinity: {}
 
+envSecrets:
+  name: my-reports-db-secret
+
+

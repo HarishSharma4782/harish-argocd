@@ -41,8 +41,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ .Values.name }}-config
-            #- secretRef:
-                #name: {{ .Values.name }}-secrets
+            - secretRef:
+                name: {{ .Values.envSecrets.name | default (printf "%s-secrets" .Values.name) }}
           livenessProbe:
             httpGet:
               path: /
@@ -76,3 +76,4 @@ spec:
         {{- toYaml .Values.affinity | nindent 8 }}
       tolerations:
         {{- toYaml .Values.tolerations | nindent 8 }}
+              
