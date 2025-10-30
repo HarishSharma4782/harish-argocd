@@ -25,8 +25,19 @@ resources:
 
 ingress:
   enabled: true
-  className: nginx
+  #className: nginx
+  className: "alb"
   annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    #alb.ingress.kubernetes.io/certificate-arn: 
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 80}]'
+    alb.ingress.kubernetes.io/load-balancer-attributes: routing.http2.enabled=true
+    #alb.ingress.kubernetes.io/ssl-policy: 
+    alb.ingress.kubernetes.io/subnets: 'subnet-01a93ef635c230df3, subnet-05b753b045d0baa74'
+    alb.ingress.kubernetes.io/healthcheck-path: '/health' # Health check path
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    #alb.ingress.kubernetes.io/group.name: 
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
   hosts:
     - host: my-reports.dev.local
@@ -34,7 +45,7 @@ ingress:
         - path: /
           pathType: Prefix
 
-serviceAccount:
+
   create: true
   name: my-reports-dev
 
@@ -49,5 +60,27 @@ secret:
     DB_PASSWORD: OWiC1BMwQAjquNoRhJKD
     DB_NAME: ourshopee
 
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
 
+volumes: []
+# - name: foo
+#   secret:
+#     secretName: mysecret
+#     optional: false
 
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts: []
+# - name: foo
+#   mountPath: "/etc/foo"
+#   readOnly: true
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
