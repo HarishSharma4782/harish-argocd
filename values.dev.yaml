@@ -46,9 +46,10 @@ ingress:
           pathType: Prefix
 
 
+serviceAccount:
   create: true
-  name: my-reports-dev
-
+  name: my-reports-staging
+  
 envSecrets:
   name: my-reports-db-secret
 
